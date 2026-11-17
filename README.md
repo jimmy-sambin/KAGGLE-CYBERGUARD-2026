@@ -156,8 +156,6 @@ Le pipeline est entièrement reproductible à partir des éléments publiés :
 4. **Métriques et graphiques** : toutes les sorties numériques sont publiées dans [`data/matlab/`](data/matlab/) (scores, ROC/PR, confusions, courbe d'apprentissage)
 5. **Démarche pas à pas** : [`notebook_pedagogique.ipynb`](notebook_pedagogique.ipynb) détaille les 10 sections de l'analyse
 
-_Les scripts d'entraînement (Python) et de visualisation (MATLAB) restent locaux et ne sont pas publiés dans ce dépôt (voir `.gitignore`)._
-
 ## 🛠️ Technologies
 
 - **Modèle** : XGBoost (gradient boosting, 400 arbres) — comparé à RandomForest, LogisticRegression, MLP
