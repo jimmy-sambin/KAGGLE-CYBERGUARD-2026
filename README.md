@@ -1,6 +1,6 @@
 # 🛡️ KAGGLE-CYBERGUARD-2026
 
-**Auteur : [Jimmy SAMBIN](https://github.com/jimmy-sambin)** · RSI — Cybersécurité · Infrastructure · IA appliquée
+**Auteur : [Jimmy SAMBIN](https://github.com/jimmy-sambin)** | Ingénieur, je conjugue systèmes d'information, cybersécurité, intelligence artificielle appliquée et opération technologique
 
 [![Python](https://img.shields.io/badge/Python-pandas_%7C_scikit--learn-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![XGBoost](https://img.shields.io/badge/Mod%C3%A8le-XGBoost-FF6600?style=flat-square)](#-mod%C3%A9lisation)
