@@ -1,0 +1,10 @@
+model,oof_macroF1_0.5
+LogisticRegression,0.9854
+RandomForest,0.9934
+XGBoost,0.9934
+MLP,0.9839
+XGBoost (seuil optimise 0.214),0.9934
+LogisticRegression (seuil optimise 0.617),0.9885
+RandomForest (seuil optimise 0.348),0.9934
+XGBoost (seuil optimise 0.214),0.9934
+MLP (seuil optimise 0.585),0.9843

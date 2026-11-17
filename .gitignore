@@ -1,0 +1,26 @@
+# === Données volumineuses (ne pas re-télécharger dans le repo) ===
+*.zip
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# === Sorties d'exécution locales ===
+*_output.txt
+matlab_log.txt
+matlab_console.txt
+
+# === Secrets — ne jamais commiter ===
+.env
+*.env
+kaggle.json
+
+# === OS / éditeur ===
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

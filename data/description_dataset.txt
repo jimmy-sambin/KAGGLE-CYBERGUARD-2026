@@ -1,0 +1,77 @@
+DESCRIPTION DU DATASET — EGSPEC CYBERGUARD CODEFORGECLUB CSBS 2026
+====================================================================
+
+Concours Kaggle : https://www.kaggle.com/competitions/egspec-cyberguard-codeforgeclub-csbs-2026
+Type : détection d'intrusions réseau à partir de statistiques de flux (CIC-IDS-like)
+
+FICHIERS
+--------
+- TRAIN_DATA.csv   : 100 000 lignes × 50 colonnes (49 features + Attack_Label)
+- TEST_DATA.csv    : 25 000 lignes × 49 colonnes (Flow_ID continu 100 001 → 125 000)
+- SAMPLE_DATA.csv  : copie de 50 lignes du test (49 colonnes de features)
+- submission.csv   : prédictions finales (Flow_ID, prédiction)
+- matlab/*.csv     : sorties intermédiaires des analyses (scores, ROC/PR, confusions…)
+
+CIBLE
+-----
+Attack_Label : Benign (70,1 %) / Malicious (29,9 %)
+NB : l'annonce officielle décrivait 7 classes d'attaque ; les données réelles
+sont binaires (voir rapports/rapport.md, §2).
+
+LES 49 FEATURES (noms exacts du CSV)
+------------------------------------
+Identifiant :
+  Flow_ID                          (continu ; 0 corrél. avec la cible)
+
+Généralités du flux :
+  Flow_Duration, Protocol (TCP/UDP/ICMP),
+  Source_Port, Destination_Port
+
+Volumes :
+  Total_Fwd_Packets, Total_Bwd_Packets,
+  Total_Fwd_Bytes, Total_Bwd_Bytes
+
+Statistiques de paquets :
+  Fwd_Packet_Length_Mean, Bwd_Packet_Length_Mean,
+  Packet_Length_Mean, Packet_Length_Std,
+  Packet_Length_Max, Packet_Length_Min,
+  Avg_Packet_Size, Avg_Fwd_Segment_Size, Avg_Bwd_Segment_Size,
+  Min_Packet_Length, Max_Packet_Length,
+  Down_Up_Ratio
+
+Débits :
+  Flow_Bytes_Per_Sec, Flow_Packets_Per_Sec,        <-- signal clé n°1 (corr. 0,81)
+  Fwd_Packets_Per_Sec, Bwd_Packets_Per_Sec
+
+En-têtes :
+  Fwd_Header_Length, Bwd_Header_Length
+
+Drapeaux TCP :
+  SYN_Flag_Count,                                  <-- signal clé n°2 (corr. 0,80)
+  ACK_Flag_Count, RST_Flag_Count, PSH_Flag_Count,
+  FIN_Flag_Count, URG_Flag_Count
+
+Sous-flux :
+  Subflow_Fwd_Packets, Subflow_Bwd_Packets,
+  Subflow_Fwd_Bytes, Subflow_Bwd_Bytes
+
+Fenêtres TCP :
+  Init_Win_Bytes_Fwd, Init_Win_Bytes_Bwd
+
+Inter-arrivals (IAT) :
+  Flow_IAT_Mean, Flow_IAT_Std,
+  Fwd_IAT_Mean, Bwd_IAT_Mean
+
+Périodes actives / inactives :
+  Active_Mean, Active_Max, Active_Min,
+  Idle_Mean, Idle_Max, Idle_Min
+
+POINTS CLÉS D'ANALYSE (voir rapports/rapport.md)
+------------------------------------------------
+- P(Malicious) = 0 % si SYN_Flag_Count <= 2 ; = 100 % si SYN >= 5 ;
+  ~26 % dans la zone ambiguë SYN ∈ {3,4} & Flow_Packets_Per_Sec > 5000.
+- Toutes les autres features ont une corrélation ~0,005 avec la cible.
+- Le jeu de test semble généré uniquement à partir de la distribution bénigne
+  (SYN jamais >= 5, FPPS max ~9 999) — 0 prédiction malicieuse en pratique.
+- Règle experte "SYN >= 5 -> Malicious" : seule, elle atteint déjà
+  Macro F1 = 0,9383 (référence du projet).

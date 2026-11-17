@@ -1,0 +1,16 @@
+,importance
+Flow_Packets_Per_Sec,0.55930567
+SYN_Flag_Count,0.30605093
+flags_total,0.030707797
+syn_ratio,0.017806409
+URG_Flag_Count,0.0022375702
+FIN_Flag_Count,0.0018189314
+fwd_bwd_pkts_ratio,0.0018048235
+Subflow_Fwd_Packets,0.0017743778
+Bwd_Header_Length,0.0017409788
+Idle_Min,0.0017325564
+Fwd_Packets_Per_Sec,0.0017100738
+RST_Flag_Count,0.001709853
+Packet_Length_Mean,0.0016793549
+Max_Packet_Length,0.001675767
+Idle_Mean,0.0016718095
